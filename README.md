@@ -1,3 +1,7 @@
+## Next step
+
+Refactor Genre, Movie, and CTA components into a common <Focusable /> component to DRY things up
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
