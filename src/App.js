@@ -48,7 +48,7 @@ class App extends React.Component {
       const focused = i === this.state.focusedIndex;
 
       return (
-        <Genre key={i} ref={thisRef} focused={focused} i={i}/>
+        <Genre key={i} ref={thisRef} focused={focused} i={i} />
       )
     });
 

@@ -1,28 +1,16 @@
 import React from 'react';
 import Cta from './Cta';
+import Focusable from './Focusable';
 
-class Movie extends React.Component {
+class Movie extends Focusable {
+
   constructor(props) {
     super(props);
-
-    this.ctaRef0 = React.createRef();
-    this.ctaRef1 = React.createRef();
-
-    this.state = {
-      focusedIndex: null
-    };
+    
+    this.childRef0 = React.createRef();
+    this.childRef1 = React.createRef();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const isLosingFocus = prevProps.focused && !this.props.focused;
-
-    if (isLosingFocus) {
-      this.setState({
-        focusedIndex: null
-      })
-    }
-  }
-  
   navigate(key) {
     const canNavigateRight = this.state.focusedIndex === 0;
     const canNavigateLeft = this.state.focusedIndex  === 1;
@@ -55,18 +43,14 @@ class Movie extends React.Component {
       this.props.focused && this.state.focusedIndex === null ? 'focused' : ''
     ].join(' ');
 
-    const ctas = [0,1].map((i) => {
-      const thisRef = this['ctaRef' + i];
-      const focused = i === this.state.focusedIndex;
-
-      return (
-        <Cta key={i} ref={thisRef} focused={focused} />
-      )
-    })
-
     return (
       <div className={className}>
-        {ctas}
+        {
+          this.generateChildren({
+            component: Cta, 
+            count: 2
+          })
+        }
       </div>
     )
   }
