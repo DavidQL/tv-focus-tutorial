@@ -1,0 +1,65 @@
+.App {
+  display: flex;
+  width: 100%;
+  height: 400px;
+
+  > .genre {
+    background: #bbb;
+    flex-grow: 1;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 4px solid transparent;
+
+    &.focused {
+      border-color: red;
+    }
+
+    .movies {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+    .movie {
+      background: #aaa;
+      width: 25%;
+      aspect-ratio: 9 / 16;
+      margin: 10px;
+      border: 4px solid transparent;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      padding-bottom: 20px;
+      box-sizing: border-box;
+
+      &.focused {
+        border-color: red;
+      }
+
+      > .cta {
+        width: 30px;
+        height: 30px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 20px;
+        border: 4px solid transparent;
+        background-size: 15px;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &.focused {
+          border: 4px solid red;
+        }
+
+        &:first-child {
+          background-image: url(./assets/play.png);
+        }
+        &:last-child {
+          background-image: url(./assets/bookmark.png);
+        }
+      }
+    }
+  }
+}
