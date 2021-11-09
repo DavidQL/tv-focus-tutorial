@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Genre from './Genre';
+import KeypressAnnouncer from './KeypressAnnouncer';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,6 +10,8 @@ class App extends React.Component {
     this.genreRef0 = React.createRef();
     this.genreRef1 = React.createRef();
     this.genreRef2 = React.createRef();
+
+    this.keypressAnnouncerRef = React.createRef();
 
     this.state = {
       focusedIndex: 0
@@ -25,6 +28,8 @@ class App extends React.Component {
     const canNavigateRight = this.state.focusedIndex < 2;
     const canNavigateLeft = this.state.focusedIndex > 0;
 
+    this.keypressAnnouncerRef.current.announce(key);
+    
     if (focusedRef.current.navigate?.(key)) {
       return;
     }
@@ -55,6 +60,8 @@ class App extends React.Component {
     return (
       <div className="App">
         {genres}
+
+        <KeypressAnnouncer ref={this.keypressAnnouncerRef}  />
       </div>
     )
   }

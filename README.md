@@ -1,6 +1,6 @@
 ## Next step
 
-Refactor Genre, Movie, and CTA components into a common <Focusable /> component to DRY things up
+Start plotting out blog post.
 
 # Getting Started with Create React App
 
