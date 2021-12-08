@@ -1,12 +1,24 @@
+#root {
+  height: 720px;
+  width: 1280px;
+  background-image: url('./assets/tv-frame.jpg');
+  background-size: contain;
+  background-size: 85%;
+  background-repeat: no-repeat;
+
+}
+
 .App {
   display: flex;
-  width: 100%;
-  height: 400px;
+  height: 100%;
+  transform: scale(0.75) translateX(-130px) translateY(-85px);
+  font-size: 24px;
 
   > .genre {
     background: #E0E0E0;
     flex-grow: 1;
     margin: 30px;
+    max-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;

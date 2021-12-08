@@ -1,30 +1,31 @@
 import React from 'react';
 import './App.scss';
 import Genre from './Genre';
+import Focusable from './Focusable';
 import KeypressAnnouncer from './KeypressAnnouncer';
 
-class App extends React.Component {
+class App extends Focusable {
   constructor(props) {
     super(props);
 
-    this.genreRef0 = React.createRef();
-    this.genreRef1 = React.createRef();
-    this.genreRef2 = React.createRef();
+    this.childRef0 = React.createRef();
+    this.childRef1 = React.createRef();
+    this.childRef2 = React.createRef();
 
     this.keypressAnnouncerRef = React.createRef();
-
-    this.state = {
-      focusedIndex: 0
-    };
   }
 
   componentDidMount() {
     document.addEventListener('keydown', this.navigate.bind(this), true);
+
+    this.setState({
+      focusedIndex: 0
+    })
   }
 
   navigate(e) {
     const key = e.key;
-    const focusedRef = this['genreRef' + this.state.focusedIndex];
+    const focusedRef = this['childRef' + this.state.focusedIndex];
     const canNavigateRight = this.state.focusedIndex < 2;
     const canNavigateLeft = this.state.focusedIndex > 0;
 
@@ -48,18 +49,14 @@ class App extends React.Component {
   }
 
   render() {
-    const genres = [0,1,2].map((i) => {
-      const thisRef = this['genreRef' + i];
-      const focused = i === this.state.focusedIndex;
-
-      return (
-        <Genre key={i} ref={thisRef} focused={focused} i={i} />
-      )
-    });
-
     return (
       <div className="App">
-        {genres}
+        {
+          this.generateChildren({
+            component: Genre, 
+            count: 3
+          })
+        }
 
         <KeypressAnnouncer ref={this.keypressAnnouncerRef}  />
       </div>

@@ -28,7 +28,7 @@ class Focusable extends React.Component {
       const ChildComponent = opts.component;
 
       return (
-        <ChildComponent key={i} ref={thisRef} focused={focused} />
+        <ChildComponent key={i} ref={thisRef} focused={focused} i={i} />
       )
     });
 

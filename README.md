@@ -1,6 +1,6 @@
 ## Next step
 
-Start plotting out blog post.
+Write prose from outline in Notes.
 
 # Getting Started with Create React App
 
